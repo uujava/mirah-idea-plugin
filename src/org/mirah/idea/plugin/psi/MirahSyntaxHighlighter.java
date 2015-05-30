@@ -39,7 +39,7 @@ public class MirahSyntaxHighlighter implements SyntaxHighlighter {
 
     @NotNull
     public Lexer getHighlightingLexer() {
-        return new MirahHighlightingiLexer();
+        return new MirahHighlightingLexer();
     }
 
     @NotNull
