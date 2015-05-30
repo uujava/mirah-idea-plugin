@@ -124,7 +124,11 @@ public class MirahHighlightingiLexer extends LexerBase {
         }
         // skip to start
         if (currentPos < startPos) {
-            while (currentPos < startPos && currTok.startpos < startPos) {
+            while (currentPos < startPos) {
+                currTok = mirahLexer.lex(currentPos, false);
+                currentPos = input.pos();
+            }
+            if (currTok.startpos < startPos) {
                 currTok = mirahLexer.lex(currentPos, false);
                 currentPos = input.pos();
             }
