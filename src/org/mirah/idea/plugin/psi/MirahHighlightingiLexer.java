@@ -67,39 +67,31 @@ public class MirahHighlightingiLexer extends LexerBase {
     @Nullable
     @Override
     public IElementType getTokenType() {
-//        System.out.println("getTokenType enter: " + this);
-        try {
-            if (currentPos >= endPos) return null;
-            if (currTok == null) _lex();
-            if (currTok != null) {
-                String txt = currTok.type == Tokens.tNL || currTok.type == Tokens.tWhitespace ? currTok.type.toString() : charSequence.subSequence(currTok.startpos, currTok.endpos).toString();
-                System.out.println("token = " + txt + " [" + currTok.startpos + "," + currTok.endpos + "]:" + currTok.type);
-                return MirahTokenType.mapFromMirah(currTok.type);
-            } else {
-                System.out.println("null token");
-                return null;
-            }
-        } finally {
-//            System.out.println("getTokenType exit: " + this);
+        if (currentPos >= endPos) return null;
+        if (currTok == null) _lex();
+        if (currTok != null) {
+            String txt = currTok.type == Tokens.tNL || currTok.type == Tokens.tWhitespace ? currTok.type.toString() : charSequence.subSequence(currTok.startpos, currTok.endpos).toString();
+            System.out.println("token = " + txt + " [" + currTok.startpos + "," + currTok.endpos + "]:" + currTok.type);
+            return MirahTokenType.mapFromMirah(currTok.type);
+        } else {
+            System.out.println("null token");
+            return null;
         }
     }
 
     @Override
     public int getTokenStart() {
-//        System.out.println("start: " + currTok.startpos);
         return currTok.startpos;
     }
 
     @Override
     public int getTokenEnd() {
         if (currTok == null) _lex();
-//        System.out.println("endPos: " + currTok.endpos);
         return currTok.endpos;
     }
 
     @Override
     public void advance() {
-//        System.out.println("advance: " + this);
         if (currTok == null) _lex();
         currTok = null;
     }
@@ -115,14 +107,13 @@ public class MirahHighlightingiLexer extends LexerBase {
         return endPos;
     }
 
+
     private void _lex() {
-//        System.out.println("_lex = " + this);
         if (currentPos >= endPos) {
             currTok = null;
             currentPos = endPos;
             return;
         }
-        // skip to start
         if (currentPos < startPos) {
             while (currentPos < startPos) {
                 currTok = mirahLexer.lex(currentPos, false);
@@ -136,8 +127,7 @@ public class MirahHighlightingiLexer extends LexerBase {
             currTok = mirahLexer.lex(currentPos, false);
             currentPos = currTok.endpos;
         }
-
-//        System.out.println("_lex => " + this);
     }
+
 
 }
