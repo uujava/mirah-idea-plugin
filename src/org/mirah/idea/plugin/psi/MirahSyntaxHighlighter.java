@@ -18,7 +18,7 @@ import static org.mirah.idea.plugin.psi.MirahTokenType.*;
 public class MirahSyntaxHighlighter implements SyntaxHighlighter {
 
     private static final Map<IElementType, TextAttributesKey> KEYS;
-    
+
     static {
         KEYS = new HashMap<IElementType, TextAttributesKey>();
         KEYS.put(KEYWORD, DefaultLanguageHighlighterColors.KEYWORD);
@@ -31,8 +31,13 @@ public class MirahSyntaxHighlighter implements SyntaxHighlighter {
         KEYS.put(COMMENT, DefaultLanguageHighlighterColors.LINE_COMMENT);
         KEYS.put(CONSTANT, DefaultLanguageHighlighterColors.CONSTANT);
         KEYS.put(JAVA_COMMENT, DefaultLanguageHighlighterColors.BLOCK_COMMENT);
-//        KEYS.put(WHITESPACE, DefaultLanguageHighlighterColors.BLOCK_COMMENT);
-
+        KEYS.put(DOT, DefaultLanguageHighlighterColors.DOT);
+        KEYS.put(BRACKET, DefaultLanguageHighlighterColors.BRACKETS);
+        KEYS.put(BRACE, DefaultLanguageHighlighterColors.BRACES);
+        KEYS.put(COMMA, DefaultLanguageHighlighterColors.COMMA);
+        KEYS.put(PARENTHES, DefaultLanguageHighlighterColors.PARENTHESES);
+        KEYS.put(CLASS_DECLARATION, DefaultLanguageHighlighterColors.CLASS_NAME);
+        KEYS.put(METHOD_DECLARATION, DefaultLanguageHighlighterColors.FUNCTION_DECLARATION);
         KEYS.put(UNKNOWN, HighlighterColors.BAD_CHARACTER);
     }
     

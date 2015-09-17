@@ -20,6 +20,9 @@ import java.util.EnumSet;
 public class MirahTokenType extends IElementType {
 
     public static final EnumSet<Tokens> KEYWORDS;
+    public static final EnumSet<Tokens> BRACKETS;
+    public static final EnumSet<Tokens> BRACES;
+    public static final EnumSet<Tokens> PARENTHESES;
     public static final EnumSet<Tokens> LITERALS;
 
     public static final MirahTokenType KEYWORD = new MirahTokenType("keyword");
@@ -34,7 +37,11 @@ public class MirahTokenType extends IElementType {
     public static final MirahTokenType UNKNOWN = new MirahTokenType("unknown");
     public static final MirahTokenType WHITESPACE = new MirahTokenType("whitespace");
     public static final MirahTokenType CONSTANT = new MirahTokenType("constant");
-
+    public static final MirahTokenType DOT = new MirahTokenType("dot");
+    public static final MirahTokenType BRACKET = new MirahTokenType("bracket");
+    public static final MirahTokenType BRACE = new MirahTokenType("brace");
+    public static final MirahTokenType COMMA = new MirahTokenType("comma");
+    public static final MirahTokenType PARENTHES = new MirahTokenType("parentheses");
     // TODO implement in lexer
     public static final MirahTokenType METHOD_DECLARATION = new MirahTokenType("method_declaration");
     public static final MirahTokenType CLASS_DECLARATION = new MirahTokenType("class_declaration");
@@ -82,21 +89,20 @@ public class MirahTokenType extends IElementType {
             return WHITESPACE;
         } else if ( KEYWORDS.contains(type)){
                 return KEYWORD;
+        } else if (BRACES.contains(type)) {
+            return BRACE;
+        } else if (BRACKETS.contains(type)) {
+            return BRACKET;
+        } else if (Tokens.tDot == type || Tokens.tDots == type) {
+            return DOT;
+        } else if (Tokens.tComma == type) {
+            return COMMA;
+        } else if (PARENTHESES.contains(type)) {
+            return PARENTHES;
         } else {
             return TokenType.BAD_CHARACTER;
         }
     }
-
-    private static Tokens[] literals = {
-            Tokens.tFloat,
-            Tokens.tTrue,
-            Tokens.tFalse,
-            Tokens.tInteger
-    };
-
-    private static Tokens[] keywords = {
-
-    };
 
     static {
         LITERALS = EnumSet.of(Tokens.tFloat,
@@ -154,6 +160,17 @@ public class MirahTokenType extends IElementType {
                 Tokens.tACC_DEFAULT,
                 Tokens.tACC_TRANSIENT
 //                Tokens.tACC_SYNCHRONIZED
+        );
+
+        BRACKETS =  EnumSet.of(
+                Tokens.tLBrack, Tokens.tRBrack
+        );
+
+        BRACES =  EnumSet.of(
+                Tokens.tLBrace, Tokens.tRBrace
+        );
+        PARENTHESES =  EnumSet.of(
+                Tokens.tLParen, Tokens.tRParen
         );
     }
 }

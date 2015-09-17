@@ -2,15 +2,14 @@
   <id>org.mirah.idea.plugin</id>
   <name>Mirah language support</name>
   <version>1.0</version>
-  <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+  <vendor email="uujava@gmail.com" url="https://github.com/uujava/mirah-idea-plugin">UUJava</vendor>
 
   <description><![CDATA[
-      Provides mirah language support to Intellij Idea
+      Provides mirah language support for Intellij Idea
     ]]></description>
 
   <change-notes><![CDATA[
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>
+      only syntax highlight provided<br>
     ]]>
   </change-notes>
 
