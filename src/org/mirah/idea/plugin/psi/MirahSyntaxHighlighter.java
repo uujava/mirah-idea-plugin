@@ -24,6 +24,7 @@ public class MirahSyntaxHighlighter implements SyntaxHighlighter {
         KEYS.put(KEYWORD, DefaultLanguageHighlighterColors.KEYWORD);
         KEYS.put(IDENTIFIER, DefaultLanguageHighlighterColors.IDENTIFIER);
         KEYS.put(LITERAL, DefaultLanguageHighlighterColors.NUMBER);
+        KEYS.put(NUMBER, DefaultLanguageHighlighterColors.NUMBER);
         KEYS.put(CHARACTER, DefaultLanguageHighlighterColors.STRING);
         KEYS.put(INSTANCE_VAR, DefaultLanguageHighlighterColors.INSTANCE_FIELD);
         KEYS.put(CLASS_VAR, DefaultLanguageHighlighterColors.STATIC_FIELD);

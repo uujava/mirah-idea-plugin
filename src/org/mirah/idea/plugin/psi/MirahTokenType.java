@@ -12,6 +12,7 @@ import org.jetbrains.annotations.Nullable;
 import org.mirah.idea.plugin.MirahLanguage;
 import org.mirah.mmeta.BaseParser;
 
+import javax.print.attribute.EnumSyntax;
 import java.util.EnumSet;
 
 /**
@@ -24,6 +25,7 @@ public class MirahTokenType extends IElementType {
     public static final EnumSet<Tokens> BRACES;
     public static final EnumSet<Tokens> PARENTHESES;
     public static final EnumSet<Tokens> LITERALS;
+    public static final EnumSet<Tokens> NUMBERS;
 
     public static final MirahTokenType KEYWORD = new MirahTokenType("keyword");
     public static final MirahTokenType IDENTIFIER = new MirahTokenType("identifier");
@@ -36,6 +38,8 @@ public class MirahTokenType extends IElementType {
     public static final MirahTokenType JAVA_COMMENT = new MirahTokenType("java_comment");
     public static final MirahTokenType UNKNOWN = new MirahTokenType("unknown");
     public static final MirahTokenType WHITESPACE = new MirahTokenType("whitespace");
+    public static final MirahTokenType NUMBER = new MirahTokenType("number");
+
     public static final MirahTokenType CONSTANT = new MirahTokenType("constant");
     public static final MirahTokenType DOT = new MirahTokenType("dot");
     public static final MirahTokenType BRACKET = new MirahTokenType("bracket");
@@ -85,6 +89,8 @@ public class MirahTokenType extends IElementType {
             return JAVA_COMMENT;
         } else if ( LITERALS.contains(type)){
             return LITERAL;
+        } else if ( NUMBERS.contains(type)){
+            return NUMBER;
         } else if ( Tokens.tWhitespace == type || Tokens.tNL == type){
             return WHITESPACE;
         } else if ( KEYWORDS.contains(type)){
@@ -105,10 +111,12 @@ public class MirahTokenType extends IElementType {
     }
 
     static {
-        LITERALS = EnumSet.of(Tokens.tFloat,
+        NUMBERS = EnumSet.of(Tokens.tInteger, Tokens.tFloat);
+
+        LITERALS = EnumSet.of(
                 Tokens.tTrue,
-                Tokens.tFalse,
-                Tokens.tInteger);
+                Tokens.tFalse
+        );
 
         KEYWORDS = EnumSet.of(Tokens.tDef,
                 Tokens.tDo,
@@ -140,6 +148,7 @@ public class MirahTokenType extends IElementType {
                 Tokens.tUnless,
                 Tokens.tUntil,
                 Tokens.tFor,
+                Tokens.tWhile,
                 Tokens.tEnsure,
                 Tokens.tDefined,
                 Tokens.tNil,
