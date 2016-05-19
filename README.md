@@ -9,3 +9,4 @@ Any help in developing the plugin appreciated
 License: http://www.wtfpl.net/
 
 [2015-10-20] Minor fixes: numbers and 'while' keyword highlights
+[2016-05-19] New features: type cast support and bugfixes in mirahc.
