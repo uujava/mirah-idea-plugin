@@ -128,7 +128,7 @@ public class MirahHighlightingLexer extends LexerBase {
             currentPos = input.pos();
             lastEnd = currTok.endpos;
             lastStart = currTok.startpos;
-        }catch (Exception ex) {
+        }catch (Throwable ex) {
             if(LOG.isDebugEnabled()) LOG.debug("bad character. currentPos: " + currentPos + " currTok" + currTok);
             currTok = null;
             lastStart = lastEnd;
